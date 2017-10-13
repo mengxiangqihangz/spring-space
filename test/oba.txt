@@ -1,3 +1,0 @@
-name=root
-pass=liu
-key=value

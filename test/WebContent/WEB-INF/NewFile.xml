@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<beans>
-	<zlyg SpringTest="com.Dom4j.SpringTest"/>
-	<zlyg SpringFactory="com.Dom4j.SpringFactory"/>
-	<zlyg SSS="com.Dom4j.SSS"/>
-
-</beans>
