@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="  
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+
+	<!-- 配置bean -->
+	<bean id="person" class="com.spring.aop.Person">
+	</bean>
+	<!-- 配置通知方法类 -->
+	<bean id="loveHelper" class="com.spring.aop.LoveHelper">
+	</bean>
+
+	<aop:config>
+		<aop:aspect id="configAspect" ref="loveHelper">
+			<!--配置com.spring.aop包下所有类或接口的所有方法 -->
+			<aop:pointcut id="loveServices" expression="execution(* com.spring.aop.*..*(..))" />
+			<aop:before pointcut-ref="loveServices" method="doBefore" />
+			<aop:after pointcut-ref="loveServices" method="doAfter" />
+			<aop:around pointcut-ref="loveServices" method="doAround" />
+			<aop:after-throwing pointcut-ref="loveServices"
+				method="doThrowing" throwing="ex" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>

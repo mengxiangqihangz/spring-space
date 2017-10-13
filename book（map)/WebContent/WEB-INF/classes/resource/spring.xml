@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	>
+	<bean id="squest" class="com.zdy.cn.springinaction.quests.SlayDragonQuest">	
+	</bean>
+
+	<bean id="mquest" class="com.zdy.cn.springinaction.quests.MakeRoundTableRounderQuest">	
+	</bean>
+	
+	<bean id="rquest" class="com.zdy.cn.springinaction.quests.RescueDamselQuest">	
+	</bean>
+	
+	<bean id="knight" class="com.zdy.cn.springinaction.knights.BraveKnight"> 
+		<constructor-arg  ref="mquest"/>
+	</bean>
+	
+	
+</beans>

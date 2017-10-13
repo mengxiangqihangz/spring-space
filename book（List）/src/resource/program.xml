@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-init-method="turnOnLights"
+	default-destroy-method="turnOffLights"
+	>
+	<bean id="auditorium" class="com.zdy.cn.program.stage.Auditorium"
+			init-method="turnOnLights"
+			destroy-method="turnOffLights">
+	</bean>
+	<!-- 
+	<bean id="kenny" class="com.zdy.cn.program.instrumentalist.imp.Instrumentalist">
+		<property name="song" value="Jingle Bells"/>
+		<property name="instruments" ref="banboo"/>	
+	</bean>
+	-->
+	
+	<bean id="banboo" class="com.zdy.cn.program.instrument.imp.Banboo">
+	</bean>
+	<bean id="piano" class="com.zdy.cn.program.instrument.imp.Piano">
+	</bean>
+	<bean id="onemanban" class="com.zdy.cn.program.instrumentalist.imp.OneManBan">
+		<property name="instruments">
+			<list>
+				<ref bean="banboo"/>
+				<ref bean="piano"/>
+			</list>
+		</property>
+	</bean>
+	
+</beans>
