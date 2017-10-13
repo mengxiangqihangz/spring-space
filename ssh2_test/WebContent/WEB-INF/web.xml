@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>ssh2_test</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	
+	<!-- 配置spring资源  有了这个配置则可以将spring与struts结合起来。-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:config/applicationContext-*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+<!-- 配置CharacterEncoding，设置字符集 
+通过过滤器解决jsp到action乱码的问题。
+方法一：通过自己编写的com.jialin.filter.CharsetEncodingFilter类。对其进行编码。
+-->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>com.jialin.filter.CharsetEncodingFilter</filter-class>
+					<!-- 		<init-param> -->
+					<!-- 			<param-name>encoding</param-name> -->
+					<!-- 			<param-value>GB18030</param-value> -->
+					<!-- 		</init-param> -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param> 
+			<param-name>forceEncoding</param-name> 
+			<param-value>true</param-value> 
+		</init-param> 
+	</filter>
+<!-- 	方法二：通过spring-web.jar自带的org.springframework.web.filter.CharacterEncodingFilter对其进行编码。-->
+
+<!-- 	 <filter>  -->
+<!-- 		<filter-name>characterEncodingFilter</filter-name>  -->
+<!-- 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  -->
+<!-- 		<init-param>  -->
+<!-- 			<param-name>encoding</param-name>  -->
+<!-- 			<param-value>UTF-8</param-value>  -->
+<!-- 		</init-param>  -->
+<!-- 		<init-param>  -->
+<!-- 			<param-name>forceEncoding</param-name>  -->
+<!-- 			<param-value>true</param-value>  -->
+<!-- 		</init-param>  -->
+<!-- 	</filter>  -->
+	<filter-mapping> 
+		<filter-name>characterEncodingFilter</filter-name> 
+		<url-pattern>/*</url-pattern> 
+	</filter-mapping> 
+	
+
+
+	<!-- 将HibernateSession开关控制配置在Filter，保证一个请求一个session，并对lazy提供支持 -->
+	<filter>
+		<filter-name>OpenSessionInView</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInView</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 配置Struts2 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		<init-param>
+			<param-name>config</param-name>
+				<!--若struts.xml在src下面则不需要配置 struts.xml。若更改了路径则必须配置
+				也未必，只需要编译的时候，struts.xml是编译在classes跟目录下就可以  ssh_annotaction中就是 如此-->
+			<param-value>struts-default.xml,struts-plugin.xml,/config/struts.xml</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	
+</web-app>

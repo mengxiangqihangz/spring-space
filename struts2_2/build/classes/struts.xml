@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="helloworld" extends="struts-default">
+    	
+    	<action name="Product_input">
+    		<result name="success">/jsp/ProductForm.jsp</result>
+    	</action>
+    	
+    	<action name="Product_save" class="net.lampbrother.app.Product" method="save">  <!-- 默认执行execute()方法 -->
+    		<result>/jsp/ProductDetails.jsp</result>
+    	</action>
+    	
+    </package>
+
+</struts>

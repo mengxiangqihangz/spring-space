@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 遗留问题：struts2.5的还没实现 -->
+<struts>
+<!-- struts把各种action分门别类地组织成不同的包。可以把包想象成一个模块，一个典型的struts.xml文件可以有一个活多个包 -->
+<!-- 每个package元素都必须有一个name属性。该name属性可以被别的package引用     -->
+<!-- namespace属性是可选的。如果它没给出，则以"/"为默认值，若非默认值。则要想调用这个包里的Action，就必须把这个属性所定义的命名空间添加到有关的uri字符串里     -->
+<!-- package元素通常要继承struts-default.xml文件里的定义的struts-default包，来进行扩展，这么做以后，我们package就可以使用struts-default包里的结果类型和拦截器 -->
+    <package name="helloworld" namespace="/" extends="struts-default">
+    	
+    	
+    	<global-results>
+    		<result name="success">/success.jsp</result>
+    	</global-results>
+    	
+    	<action name="Test_ServletAware" class="net.lampbrother.app.TestServletAware"></action>
+    	
+    	<action name="Test_ServletActionContext" class="net.lampbrother.app.TestServletActionContext">
+    	</action>
+    	
+    	<action name="Test_Aware" class="net.lampbrother.app.TestAware">
+    	</action>
+    	
+    	<action name="Test_ActionContext" class="net.lampbrother.app.TestActionContext">
+    	</action>
+    	
+    	<action name="Product_input">
+    		<result name="success">/jsp/ProductForm.jsp</result>
+    	</action>
+    	
+    	<action name="Product_save" class="net.lampbrother.app.Product" method="save">
+    		<result>/jsp/ProductDetails.jsp</result>  <!-- 默认name="success" -->
+    	</action>
+    	
+    </package>
+
+</struts>
