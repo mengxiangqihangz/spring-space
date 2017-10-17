@@ -15,25 +15,24 @@ import sia.knights.Knight;
 @ContextConfiguration
 public class KnightXMLInjectionTest {
 
-  @Autowired
-  Knight knight;
+	@Autowired
+	Knight knight;
 
-  @Autowired
-  FakePrintStream printStream;
+	@Autowired
+	FakePrintStream printStream;
 
-  @After
-  public void clearPrintStream() {
-    printStream.clear();
-  }
+	@After
+	public void clearPrintStream() {
+		printStream.clear();
+	}
 
-  @Test
-  public void shouldInjectKnightWithSlayDragonQuest() {
-    knight.embarkOnQuest();
-    assertEquals(
-        "Fa la la, the knight is so brave!\n" +
-        "Embarking on quest to slay the dragon!\n" +
-        "Tee hee hee, the brave knight did embark on a quest!\n", 
-        printStream.getPrintedString());
-  }
+	@Test
+	public void shouldInjectKnightWithSlayDragonQuest() {
+		knight.embarkOnQuest();
+		assertEquals("Fa la la, the knight is so brave!\n"
+				+ "Embarking on quest to slay the dragon!\n"
+				+ "Tee hee hee, the brave knight did embark on a quest!\n",
+				printStream.getPrintedString());
+	}
 
 }

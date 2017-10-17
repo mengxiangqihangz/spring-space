@@ -9,6 +9,7 @@ public class Stage implements IStage {
 	public void setTalent(ITalent talent) {
 		this.talent = talent;
 	}
+	
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
