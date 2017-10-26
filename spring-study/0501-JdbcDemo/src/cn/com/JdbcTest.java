@@ -12,6 +12,7 @@ public class JdbcTest {
 	
 	private static ApplicationContext app=null;
 	private static JdbcTemplate jdbcTemplate;
+	
 	public static void main(String[] args) {
 		app=new ClassPathXmlApplicationContext("applicationContext.xml");
 		jdbcTemplate=(JdbcTemplate) app.getBean("jdbcTemplate");
@@ -25,6 +26,7 @@ public class JdbcTest {
 //		JdbcTemplate jdbcTemplate=(JdbcTemplate) app.getBean("jdbcTemplate");
 //	}
 //	
+	
 //	@Test
 //	public void testUpdate(){
 //		String sql="update spitter set spittername=? where spitterpassword=?";

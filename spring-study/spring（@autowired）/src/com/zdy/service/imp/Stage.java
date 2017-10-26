@@ -7,6 +7,7 @@ import com.zdy.service.IStage;
 import com.zdy.service.ITalent;
 
 public class Stage implements IStage {
+	
 	@Autowired
 	@Qualifier("dance")
 	public ITalent talent;
