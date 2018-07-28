@@ -4,6 +4,11 @@ import org.springframework.stereotype.Component;
 
 import com.atguigu.spring.aop.helloworld.ArithmeticCalculator;
 
+/**
+ * 方法实现类
+ * @author liang
+ *
+ */
 @Component
 public class ArithmeticCalculatorImpl implements ArithmeticCalculator {
 

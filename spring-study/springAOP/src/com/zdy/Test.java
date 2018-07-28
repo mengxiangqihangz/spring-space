@@ -14,5 +14,4 @@ public class Test {
 		IStage stage=(IStage)context.getBean("stage");
 		stage.show();
 	}
-
 }

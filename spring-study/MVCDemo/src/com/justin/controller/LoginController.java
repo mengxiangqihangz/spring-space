@@ -12,7 +12,7 @@ public class LoginController {
 	@RequestMapping("login")
 	public String login (SysUser user) {
 		System.out.println("Login!!!");
-		if (user.getUserName().equals("admin")  && user.getUserPwd().equals("123")) {
+		if ("admin".equals(user.getUserName())  && "123".equals(user.getUserPwd())) {
 			return "index";
 		}
 		return "login";

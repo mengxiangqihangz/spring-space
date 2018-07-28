@@ -33,10 +33,7 @@ public class WebController {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("usersession") == null) {
 			List<Film> filmlist = filmManager.getFilm3();
-
 			request.setAttribute("filmlist", filmlist);
-
-			
 		} else {
 
 			String name = session.getAttribute("usersession").toString();

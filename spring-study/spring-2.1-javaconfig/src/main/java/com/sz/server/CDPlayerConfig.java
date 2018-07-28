@@ -10,11 +10,7 @@ import com.sz.entity.SgtPeppers;
 
 @Configuration
 public class CDPlayerConfig {
-	
-	
-	
-	
-	@Bean
+   	@Bean
 	public CompactDisc sgtPeppers(){
 		
 		return new SgtPeppers();

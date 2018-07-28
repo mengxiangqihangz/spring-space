@@ -8,6 +8,7 @@ public class AopTest {
 		
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 		ArithmeticCalculator arith=(ArithmeticCalculator) ctx.getBean("arithmeticCalculatorImpl");
+		
 		int result=arith.add(10, 5);
 		System.out.println(result);
 		
