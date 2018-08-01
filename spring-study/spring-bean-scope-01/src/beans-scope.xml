@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+     	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+     	
+	<context:component-scan base-package="com"></context:component-scan>
+	<!-- 默认scope为单例  singleton-->
+	<bean id="car" class="com.zzl.spring.beans.autowire.Car" scope="prototype">
+		<property name="brand" value="Audi"></property>
+		<property name="price" value="300000"></property>
+	</bean>
+
+	<bean id="app" class="com.sz.App"></bean>
+	<bean id="App2" class="com.sz.App2"></bean>
+	
+	<bean id="parent" class="com.sz.service.Parent">
+		<property name="bankDao" ref="bankDaoImpl"></property>
+	</bean>
+	
+	<!-- 这个并不表示child实例拥有bankDao属性，而是表示child实例可以执行setBankDao方法 -->
+	<bean id="child" class="com.sz.service.Child">
+		<property name="bankDao" ref="bankDaoImpl2"></property>
+	</bean>
+	
+	
+</beans>

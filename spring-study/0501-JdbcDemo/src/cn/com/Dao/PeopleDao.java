@@ -13,6 +13,6 @@ public class PeopleDao {
 	
 	private static String sql="insert into spitter(username,password) values (?,?)";
 	public void addSpitter(Spitter spit){
-//		jdbcTemplate.update(sql, spit.getUsername(),spit.getPassword());
+		jdbcTemplate.update(sql, spit.getUsername(),spit.getPassword());
 	}
 }

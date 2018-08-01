@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.dd.wx.dao.UserDao">
+
+	<select id="getList" resultType="com.dd.wx.model.User">
+		SELECT * FROM Student
+	</select>
+
+	<select id="getUser" parameterType="java.lang.String" resultType="com.dd.wx.model.User">
+		SELECT * FROM Student WHERE ID = #{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="com.dd.wx.model.User">
+		INSERT INTO Student (ID, NAME, AGE, SEX, MOBILE)
+		VALUES(#{id}, #{name}, #{age}, #{sex}, #{mobile})
+	</insert>
+</mapper>

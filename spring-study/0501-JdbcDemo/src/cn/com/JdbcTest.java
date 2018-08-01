@@ -8,6 +8,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import cn.com.Dao.DaoImpl;
 import cn.com.source.Spitter;
 
+
+/**
+ * 这里展现了4种连接数据库的方式
+ * 1. controller中的 连接mysql 和oracle数据库
+ * 2. spring 的jdbcTemplate 执行sql
+ * 3. DaoImpl中的 直接从c3p0的数据源中 获取连接。  ---------c3p0数据源是带连接池的。
+ * 
+ * 
+ * @author liangpro
+ *
+ */
 public class JdbcTest {
 	
 	private static ApplicationContext app=null;
@@ -23,15 +34,15 @@ public class JdbcTest {
 	
 //	{
 //		app=new ClassPathXmlApplicationContext("applicationContext.xml");
-//		JdbcTemplate jdbcTemplate=(JdbcTemplate) app.getBean("jdbcTemplate");
+//		jdbcTemplate=(JdbcTemplate) app.getBean("jdbcTemplate");
 //	}
-//	
 	
-//	@Test
-//	public void testUpdate(){
-//		String sql="update spitter set spittername=? where spitterpassword=?";
-//		jdbcTemplate.update(sql, "lisi","456");
-//	}
+	
+	@Test
+	public void testUpdate(){
+		String sql="update spitter set spittername=? where spitterpassword=?";
+		jdbcTemplate.update(sql, "lisi","456");
+	}
 	
 //		Spitter spit=(Spitter) app.getBean("spitter");
 //		

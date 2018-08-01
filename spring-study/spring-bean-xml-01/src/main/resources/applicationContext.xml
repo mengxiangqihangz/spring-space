@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 普通的bean，注入字面量 -->
+	<bean id = "person" class = "com.zzl.sz.entity.Person">
+		<property name="name" ><null/></property>
+		<property name="age" value="18"></property>
+	</bean>
+	
+	<!-- 注入list -->
+	<bean id="serverImpl" class="com.zzl.sz.service.impl.ServerImpl">
+		<property name="person" ref="person"></property>
+		<property name="entity">
+			<list>
+				<ref bean="person"/>
+				<ref bean="company"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 构造器注入，字面量，null，list集合 -->
+	<bean id="company" class="com.zzl.sz.entity.Company">
+		<constructor-arg value="null"></constructor-arg>
+		<constructor-arg ><null/></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>zhangsan</value>
+				<value>lisi</value>			
+				<value>wangwu</value>			
+				<value>zhaoliu</value>			
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	
+	
+
+</beans>

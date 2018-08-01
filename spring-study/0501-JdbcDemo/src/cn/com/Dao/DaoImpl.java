@@ -10,7 +10,9 @@ import cn.com.source.Spitter;
 
 public class DaoImpl {
 	private static String sql="insert into spitter(username,password) values (?,?)";
+	
 	private BasicDataSource dataSource;
+	
 	public void addSpitter(Spitter spit){
 		Connection conn=null;
 		PreparedStatement stat=null;
